@@ -120,6 +120,6 @@ in our project. Let's create a task that deletes the "build" folder.
 
 */
 
-task deleteBuild(type: Delete) {
+task deleteBuild (type: Delete) {
     delete 'build'
 }
