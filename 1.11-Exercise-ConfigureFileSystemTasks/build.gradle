@@ -38,7 +38,7 @@ task copySource (type: Copy) {
     into 'build'
 }
 
-task bundleWeb (type: Zip) {
+task bundleWeb (type: Zip, dependsOn: copySource) {
     baseName = zipFileName
     destinationDir = file('build')
 
@@ -47,13 +47,13 @@ task bundleWeb (type: Zip) {
     }
 }
 
-task unzipBundleWeb (type: Copy) {
+task unzipBundleWeb (type: Copy, dependsOn: bundleWeb) {
     def zipFile = file("build/${zipFileName}.zip")
     
     from zipTree(zipFile)
     into "build/exploded"
 }
 
-task deleteHelp (type: Delete) {
+task deleteHelp (type: Delete, dependsOn: copySource) {
     delete 'build/web/help'
 }
