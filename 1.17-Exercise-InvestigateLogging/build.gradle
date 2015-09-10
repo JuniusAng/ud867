@@ -23,17 +23,20 @@ Exercises:
 
 */
 
+logger.debug 'catch me if you can' 
+
 task hello(type: HelloTask)
 
 class HelloTask extends DefaultTask {
     @TaskAction
     void doAction() {
-        println 'Hello World'
+        logger.info 'Init HelloTask'
+        logger.lifecycle 'Hello World'
+        logger.info 'Finish HelloTask'
     }
 }
 
-/*
 task derpy << {
-    primp "Herp de derp"
+    print "Herp de derp"
 }
-*/
+
